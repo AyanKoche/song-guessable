@@ -1,0 +1,130 @@
+:root {
+  --bg-primary: #090b10;
+  --bg-secondary: #0f131c;
+  --bg-surface: rgba(18, 24, 38, 0.72);
+  --bg-surface-hover: rgba(28, 36, 56, 0.85);
+  --bg-card: rgba(22, 30, 48, 0.55);
+  --bg-card-border: rgba(255, 255, 255, 0.08);
+  --bg-glass-high: rgba(255, 255, 255, 0.05);
+
+  --accent-emerald: #00f59b;
+  --accent-emerald-glow: rgba(0, 245, 155, 0.35);
+  --accent-cyan: #00e5ff;
+  --accent-cyan-glow: rgba(0, 229, 255, 0.35);
+  --accent-violet: #a855f7;
+  --accent-violet-glow: rgba(168, 85, 247, 0.35);
+  --accent-amber: #ffb703;
+  --accent-rose: #ff0055;
+  --accent-rose-glow: rgba(255, 0, 85, 0.35);
+
+  --tier-1-color: #ff3366; /* 0.1s */
+  --tier-2-color: #ff9900; /* 0.5s */
+  --tier-3-color: #ffcc00; /* 1.5s */
+  --tier-4-color: #00d2ff; /* 3.0s */
+  --tier-5-color: #a855f7; /* 8.0s */
+
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-dim: #475569;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(0, 245, 155, 0.6);
+
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --shadow-glow: 0 0 25px rgba(0, 245, 155, 0.2);
+  --shadow-card: 0 12px 36px -4px rgba(0, 0, 0, 0.6);
+  --shadow-modal: 0 24px 60px -12px rgba(0, 0, 0, 0.85);
+
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.glass-panel-interactive {
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+}
+
+.glass-panel-interactive:hover {
+  background: var(--bg-surface-hover);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7);
+}
+
+/* Ambient glow gradient background */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(0, 245, 155, 0.07) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.04) 0%, transparent 60%);
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #fff 0%, #00f59b 50%, #00e5ff 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 6s ease-in-out infinite alternate;
+}
+
+/* Pulse animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px var(--accent-emerald-glow);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 35px var(--accent-emerald-glow), 0 0 50px rgba(0, 229, 255, 0.25);
+  }
+}
+
+.pulse-button {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+/* Vinyl rotation animation */
+@keyframes spin-vinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-vinyl 12s linear infinite;
+}
