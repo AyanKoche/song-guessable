@@ -285,7 +285,7 @@ export const ModeSelector: React.FC = () => {
       </div>
 
       {/* Genre / Category & Decade Filters */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
         {/* Genre Selector */}
         <div>
           <h3

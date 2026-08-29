@@ -54,16 +54,7 @@ export const AudioPlayerArena: React.FC = () => {
 
   return (
     <div
-      className="glass-panel"
-      style={{
-        padding: '2rem 1.75rem',
-        maxWidth: '680px',
-        margin: '0 auto',
-        width: '100%',
-        position: 'relative',
-        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.75)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-      }}
+      className="glass-panel arena-card"
     >
       {/* Top Arena Info Badges */}
       <div

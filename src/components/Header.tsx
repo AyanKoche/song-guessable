@@ -7,7 +7,6 @@ export const Header: React.FC = () => {
   const {
     status,
     difficulty,
-    gameMode,
     stats,
     username,
     isMuted,
@@ -73,6 +72,7 @@ export const Header: React.FC = () => {
 
         {status !== 'idle' && (
           <div
+            className="hide-on-mobile"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -94,45 +94,36 @@ export const Header: React.FC = () => {
             >
               {currentDiff.name}
             </span>
-            <span
-              style={{
-                fontSize: '0.75rem',
-                color: 'var(--text-muted)',
-                textTransform: 'capitalize',
-              }}
-            >
-              • {gameMode} mode
-            </span>
           </div>
         )}
       </div>
 
       {/* Right Controls */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
         {/* Streak Counter */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.35rem',
+            gap: '0.25rem',
             background: 'rgba(255, 183, 3, 0.12)',
             border: '1px solid rgba(255, 183, 3, 0.25)',
-            padding: '0.4rem 0.8rem',
+            padding: '0.35rem 0.65rem',
             borderRadius: 'var(--radius-full)',
             color: '#ffb703',
-            fontSize: '0.85rem',
+            fontSize: '0.8rem',
             fontWeight: 700,
           }}
           title={`Current Streak: ${stats.currentStreak} (Max: ${stats.maxStreak})`}
         >
-          <Flame size={16} color="#ffb703" fill="#ffb703" />
+          <Flame size={15} color="#ffb703" fill="#ffb703" />
           <span>{stats.currentStreak}</span>
         </div>
 
         {/* How To Play */}
         <button
           onClick={() => setShowHowToPlayModal(true)}
-          className="btn-secondary"
+          className="btn-secondary compact-mobile-btn"
           style={{ padding: '0.5rem', borderRadius: '50%', width: '38px', height: '38px' }}
           title="How to Play"
         >
@@ -142,7 +133,7 @@ export const Header: React.FC = () => {
         {/* Stats */}
         <button
           onClick={() => setShowStatsModal(true)}
-          className="btn-secondary"
+          className="btn-secondary compact-mobile-btn"
           style={{ padding: '0.5rem', borderRadius: '50%', width: '38px', height: '38px' }}
           title="Statistics & Streaks"
         >
@@ -152,7 +143,7 @@ export const Header: React.FC = () => {
         {/* Mute/Volume */}
         <button
           onClick={toggleMute}
-          className="btn-secondary"
+          className="btn-secondary compact-mobile-btn"
           style={{ padding: '0.5rem', borderRadius: '50%', width: '38px', height: '38px' }}
           title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
         >
@@ -165,10 +156,10 @@ export const Header: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.45rem',
+            gap: '0.4rem',
             background: 'rgba(255, 255, 255, 0.05)',
             border: '1px solid var(--border-subtle)',
-            padding: '0.35rem 0.75rem',
+            padding: '0.35rem 0.65rem',
             borderRadius: 'var(--radius-full)',
             color: 'var(--text-secondary)',
             fontSize: '0.8rem',
@@ -177,8 +168,8 @@ export const Header: React.FC = () => {
         >
           <div
             style={{
-              width: '22px',
-              height: '22px',
+              width: '20px',
+              height: '20px',
               borderRadius: '50%',
               background: 'linear-gradient(135deg, #a855f7 0%, #00e5ff 100%)',
               display: 'flex',
@@ -186,9 +177,9 @@ export const Header: React.FC = () => {
               justifyContent: 'center',
             }}
           >
-            <User size={12} color="#fff" />
+            <User size={11} color="#fff" />
           </div>
-          <span style={{ maxWidth: '100px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <span className="hide-on-mobile" style={{ maxWidth: '80px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {username}
           </span>
         </button>

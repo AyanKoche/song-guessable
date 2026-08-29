@@ -130,21 +130,14 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   return (
-    <div ref={containerRef} style={{ position: 'relative', width: '100%', margin: '1rem 0' }}>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '0.65rem', width: '100%' }}>
+    <div ref={containerRef} style={{ position: 'relative', width: '100%', margin: '1rem 0 0.5rem' }}>
+      <form onSubmit={handleSubmit} className="search-bar-form">
         {/* Search Input Container */}
-        <div
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
+        <div className="search-input-wrapper">
           <div
             style={{
               position: 'absolute',
-              left: '1rem',
+              left: '0.85rem',
               color: 'var(--text-muted)',
               pointerEvents: 'none',
               display: 'flex',
@@ -170,15 +163,15 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             }}
             onKeyDown={handleKeyDown}
             disabled={disabled}
-            placeholder="Know it? Search song or artist (type 3+ chars)..."
+            placeholder="Search song or artist (3+ chars)..."
             style={{
               width: '100%',
-              padding: '0.9rem 1rem 0.9rem 2.8rem',
+              padding: '0.85rem 0.85rem 0.85rem 2.6rem',
               background: 'rgba(18, 24, 38, 0.85)',
               border: '1px solid var(--border-subtle)',
               borderRadius: 'var(--radius-lg)',
               color: 'var(--text-primary)',
-              fontSize: '0.95rem',
+              fontSize: '0.92rem',
               outline: 'none',
               transition: 'all var(--transition-fast)',
               boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.4)',
@@ -197,54 +190,49 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             <span
               style={{
                 position: 'absolute',
-                right: '1rem',
-                fontSize: '0.75rem',
+                right: '0.75rem',
+                fontSize: '0.72rem',
                 color: 'var(--text-muted)',
                 pointerEvents: 'none',
               }}
             >
-              Type {3 - query.length} more...
+              +{3 - query.length}
             </span>
           )}
         </div>
 
-        {/* Action Buttons */}
-        <button
-          type="button"
-          onClick={onSkipTurn}
-          disabled={disabled}
-          className="btn-secondary"
-          style={{
-            padding: '0.85rem 1.25rem',
-            borderRadius: 'var(--radius-lg)',
-            fontSize: '0.88rem',
-            whiteSpace: 'nowrap',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.4rem',
-          }}
-          title={nextDuration ? `Skip turn and unlock ${nextDuration}s clip` : 'Skip turn'}
-        >
-          <FastForward size={16} />
-          <span>{nextDuration ? `Skip (+${nextDuration}s)` : 'Give Up'}</span>
-        </button>
+        {/* Action Buttons Row */}
+        <div className="search-actions-row">
+          <button
+            type="button"
+            onClick={onSkipTurn}
+            disabled={disabled}
+            className="btn-secondary"
+            style={{
+              borderRadius: 'var(--radius-lg)',
+              whiteSpace: 'nowrap',
+            }}
+            title={nextDuration ? `Skip turn and unlock ${nextDuration}s clip` : 'Skip turn'}
+          >
+            <FastForward size={16} />
+            <span>{nextDuration ? `Skip (+${nextDuration}s)` : 'Give Up'}</span>
+          </button>
 
-        <button
-          type="submit"
-          disabled={disabled || query.trim().length === 0}
-          className="btn-primary"
-          style={{
-            padding: '0.85rem 1.5rem',
-            borderRadius: 'var(--radius-lg)',
-            fontSize: '0.92rem',
-            whiteSpace: 'nowrap',
-            opacity: disabled || query.trim().length === 0 ? 0.4 : 1,
-            cursor: disabled || query.trim().length === 0 ? 'not-allowed' : 'pointer',
-          }}
-        >
-          <span>Guess</span>
-          <ArrowRight size={16} />
-        </button>
+          <button
+            type="submit"
+            disabled={disabled || query.trim().length === 0}
+            className="btn-primary"
+            style={{
+              borderRadius: 'var(--radius-lg)',
+              whiteSpace: 'nowrap',
+              opacity: disabled || query.trim().length === 0 ? 0.4 : 1,
+              cursor: disabled || query.trim().length === 0 ? 'not-allowed' : 'pointer',
+            }}
+          >
+            <span>Guess</span>
+            <ArrowRight size={16} />
+          </button>
+        </div>
       </form>
 
       {/* Autocomplete Dropdown */}

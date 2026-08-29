@@ -71,17 +71,18 @@ export const ProgressiveTimeline: React.FC<ProgressiveTimelineProps> = ({
                 alignItems: 'center',
                 gap: '0.35rem',
                 background: 'rgba(0, 245, 155, 0.12)',
-                padding: '0.2rem 0.6rem',
+                padding: '0.2rem 0.55rem',
                 borderRadius: 'var(--radius-full)',
                 border: '1px solid rgba(0, 245, 155, 0.25)',
+                fontSize: '0.8rem',
               }}
             >
               <RotateCcw size={12} className="animate-spin-slow" />
-              <span>Playing: {playbackCurrentSec.toFixed(2)}s / {currentDuration.toFixed(1)}s (from 0.0s)</span>
+              <span>{playbackCurrentSec.toFixed(2)}s / {currentDuration.toFixed(1)}s</span>
             </span>
           ) : (
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-              Plays from 0.0s &rarr; {currentDuration}s
+            <span style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>
+              0.0s &rarr; {currentDuration}s
             </span>
           )}
         </div>

@@ -81,14 +81,14 @@ export const PlaybackControls: React.FC<PlaybackControlsProps> = ({
             marginTop: '0.2rem',
           }}
         >
-          Press <kbd style={{
+          <span className="hide-on-mobile">Press <kbd style={{
             background: 'rgba(255, 255, 255, 0.1)',
             padding: '0.1rem 0.4rem',
             borderRadius: '4px',
             fontFamily: 'var(--font-mono)',
             fontSize: '0.7rem',
             border: '1px solid rgba(255, 255, 255, 0.15)',
-          }}>SPACEBAR</kbd> or click to listen
+          }}>SPACE</kbd> or </span>Tap button to listen
         </span>
       </div>
     </div>
